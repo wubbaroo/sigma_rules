@@ -6,11 +6,12 @@ date: October 13, 2023
 references:
   - https://www.malware-traffic-analysis.net/2023/10/03/index.html
 logsource:
-product: windows
-    category: registry_set
+    product: windows
+    category: registry_add
 detection:
   selection:
-      TargetObject|contains: 'HKCU\Sofware\Microsoft\podogyniu'
+          EventType: CreateKey
+          TargetObject|contains: 'HKCU\Sofware\Microsoft\podogyniu'
   selection1:
 	  TargetObject|base64: /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/<br />
   condition: selection and selection1
