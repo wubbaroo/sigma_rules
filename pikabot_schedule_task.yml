@@ -1,0 +1,21 @@
+title: PIKABOT INFECTION WITH COBALT STRIKE Schedule Task
+status: experimental
+description: This rule will detect persistence of an pikabot infection with Cobalt Strike. The rule will detect schedule task creation. 
+author: Alan Staciluaskas
+date: October 13, 2023
+references:
+  - https://www.malware-traffic-analysis.net/2023/10/03/index.html
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+      event_id: 4698
+	  TargetObject|contains: 'powershell'
+	  TargetObject|contains: 'HKCU'
+  condition: selection
+falsepositives:
+  - Unknown
+level: high
+tags:
+  - attack.t1053
