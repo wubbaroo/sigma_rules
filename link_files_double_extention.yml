@@ -1,0 +1,19 @@
+title: PIKABOT INFECTION WITH COBALT STRIKE Schedule Task
+status: experimental
+description: This rule will detect persistence of an pikabot infection with Cobalt Strike. The rule will detect link files that appear to be PDFs. 
+author: Alan Staciluaskas
+date: October 13, 2023
+references:
+  - https://www.malware-traffic-analysis.net/2023/10/03/index.html
+logsource:
+    product: windows
+    category: file_event
+detection:
+  selection:
+      TargetFilename|endswith: 'pdf.lnk'
+  condition: selection
+falsepositives:
+  - Unknown
+level: high
+tags:
+  - attack.t1204.001 
